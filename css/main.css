@@ -1,0 +1,36 @@
+.barcard {
+	margin: 12px 0px;
+	border-radius: 4px;
+}
+
+.heading {
+	padding: 15px 15px;
+}
+
+.body {
+	padding: 15px;
+}
+
+.barcard img {
+	float: left;
+	width: 40px;
+	/*width: 100%;*/
+}
+
+.barcard .img-container {
+	position: relative;
+}
+
+.barcard .rating {
+	position: absolute;
+    right: -8px;
+    bottom: -2px;
+}
+
+.input-group__details {
+	min-height: 0px;
+}
+
+/*.filter {
+	padding: 15px;
+}*/

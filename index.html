@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
+ <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
+ <link href="./css/main.css" rel="stylesheet">
+ <!-- <link rel="stylesheet" href="./css/font-awesome.min.css"> -->
+</head>
+<body>
+ <div id="app">
+   <v-app>
+     <main>
+       <v-container class="">
+       		<v-layout row>
+    				<v-flex xs10 offset-xs1 class="heading brown lighten-2">
+    		       		<span class="title">Jordans List</span>
+                  <router-link to="/about" href="#" class="ml-3 grey--text text--darken-4">About</router-link>
+                  <a href="#" class="ml-3 grey--text text--darken-4">Understanding Dark Chocolate</a>
+    		       		<!-- <p class="grey--text text--darken-1">Ranking and comparing dark chocolate (cacoa > 50%)</p> -->
+            </v-flex>
+          </v-layout>
+
+          <router-view></router-view>
+
+          <v-layout row>
+            <v-flex xs10 offset-xs1 class="brown lighten-4 body caption text-xs-center grey--text">
+                <v-spacer></v-spacer>
+                <div>&copy; Jordan Marshall {{ new Date().getFullYear() }}</div>
+            </v-flex>
+          </v-layout>
+       </v-container>
+     </main>
+   </v-app>
+ </div>
+
+<template id="barcard">
+ <v-layout row>
+      <v-flex xs12>
+        <v-layout row class="barcard ">
+          <v-flex xs12 class="text-xs-left">
+            <img v-bind:src="bar.image" class="mr-3"> 
+            <div class="headline subheading">
+              <span class="brown--text text--darken-4">{{bar.brand}}</span> - 
+              <span class="brown--text text--darken-4">{{bar.name}} ({{bar.chocolatePercentage}}%)</span>
+            </div>
+           
+            <!-- <p>{{bar.notes}}</p> -->
+
+             <div class="tag-row body-1">
+              <span class="deep-orange--text">{{bar.rating * 10 }} points</span>
+              <span v-if="bar.organic" class="ml-2 grey--text">Organic</span>
+              <span v-if="bar.fairTrade" class="ml-2 grey--text">Fair Trade</span>
+
+            </div>
+
+          </v-flex>
+        </v-layout>
+      </v-flex>
+   </v-layout>
+</template>
+
+<template id="mainList">
+  <div>
+    <v-layout row>
+      <v-flex xs10 offset-xs1 class="brown lighten-4 pt-2 pl-3">
+        <v-layout row>
+          <v-flex xs2 class="pr-4">
+              <v-select v-bind:items="orderOptions" label="Order By" v-model="orderBy" class="pb-0"></v-select>
+          </v-flex>
+          <v-flex xs3 class="pr-4">
+              <v-select v-bind:items="brands" label="Filter by Brand" v-model="selectedBrand"></v-select>                  
+          </v-flex>
+          <v-flex xs3 class="pr-4">
+              <v-select v-bind:items="ethicalOptions" multiple single-line label="Ethical Options" v-model="selectedEthical"></v-select>                  
+          </v-flex>
+          <v-flex xs1 class="caption pt-3">
+            <v-btn small flat v-on:click="clearFilter" class="">
+              <v-icon left>clear_all</v-icon> Clear
+            </v-btn>
+          </v-flex>
+
+        </v-layout>
+      </v-flex>
+    </v-layout>
+    <v-layout row>
+      <v-flex xs10 offset-xs1 class="brown lighten-4 body">
+          <template v-for="bar in barsSorted">
+            <bar-card v-bind:bar="bar" v-show="showBar(bar)"></bar-card>
+          </template>
+      </v-flex>
+    </v-layout>
+  </div>
+</template>
+
+<template id="about">
+  <v-layout row>
+    <v-flex xs10 offset-xs1 class="brown lighten-4 body">
+        <h1>About</h1>
+    </v-flex>
+  </v-layout>
+</template>
+
+<!--  <template id="barcard">
+   <v-layout row>
+      <v-flex xs10>
+        <v-layout row class="barcard ">
+          <v-flex xs2 class="img-container">
+            <img v-bind:src="bar.image"> 
+            <v-chip label class="deep-orange darken-4 white--text body-2 rating">
+              <v-icon left>grade</v-icon> {{bar.rating * 10}}
+            </v-chip> 
+          </v-flex>
+
+          <v-flex xs10 class="text-xs-left body">
+
+            <v-chip outline class="percentage chip text-xs-right red red--text subheading">{{bar.chocolatePercentage}}% Cacao</v-chip>
+            <div class="headline mb-3">
+              <span class="deep-orange--text text--darken-4">{{bar.brand}}</span> 
+              <span class="brown--text text--darken-4">{{bar.name}}</span>
+            </div>
+           
+            <p>{{bar.notes}}</p>
+
+             <div class="tags">
+              <v-chip small label class="ml-0" v-if="bar.organic">Organic</v-chip>
+              <v-chip small label class="ml-0" v-if="bar.fairTrade" class="chip small">Fair Trade</v-chip>
+            </div>
+
+          </v-flex>
+        </v-layout>
+      </v-flex>
+   </v-layout>
+ </template> -->
+ 
+ <script src="https://unpkg.com/vue/dist/vue.js"></script>
+ <script src="https://unpkg.com/vuetify/dist/vuetify.js"></script>
+ <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+ <script src="./bar_list.js"></script>
+ <script src="./main.js"></script>
+</body>
+</html>
