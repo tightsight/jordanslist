@@ -1,24 +1,30 @@
 .barcard {
-	margin: 12px 0px;
+	margin: 15px 0px;
 	border-radius: 4px;
 }
 
 .heading {
-	padding: 15px 15px;
+	padding: 15px 25px;
+	background-color: rgba(152, 63, 9, 0.64);
 }
 
 .body {
-	padding: 15px;
+	background-color: rgba(152, 63, 9, 0.06);
+	padding: 15px 25px;
 }
 
 .barcard img {
 	float: left;
-	width: 40px;
+	width: 50px;
 	/*width: 100%;*/
 }
 
 .barcard .img-container {
 	position: relative;
+}
+
+.barcard-row:first-child .barcard {
+	margin-top:0px;
 }
 
 .barcard .rating {
@@ -27,10 +33,14 @@
     bottom: -2px;
 }
 
+// This is for a weird quirk on select groups
 .input-group__details {
-	min-height: 0px;
+	min-height: 0px !important;
 }
 
-/*.filter {
-	padding: 15px;
-}*/
+
+
+.page-title {
+	text-decoration: none;
+}
+

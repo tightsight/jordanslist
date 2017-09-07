@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>Jordans List - Ranking Dark Chocolate</title>
  <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
  <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
  <link href="./css/main.css" rel="stylesheet">
@@ -12,10 +13,11 @@
      <main>
        <v-container class="">
        		<v-layout row>
-    				<v-flex xs10 offset-xs1 class="heading brown lighten-2">
-    		       		<span class="title">Jordans List</span>
-                  <router-link to="/about" href="#" class="ml-3 grey--text text--darken-4">About</router-link>
-                  <a href="#" class="ml-3 grey--text text--darken-4">Understanding Dark Chocolate</a>
+    				<v-flex xs8 offset-xs2 class="heading">
+    		       		<router-link to="/" class="page-title grey--text text--darken-4"><span class="display-1">Jordans List</span></router-link>
+                  <router-link to="/about" href="#" class="ml-4 grey--text text--darken-4 subheading">About</router-link>
+                  <router-link to="/dark-chocolate" class="ml-4 grey--text text--darken-4 subheading">Understanding Dark Chocolate</router-link>
+                  <!-- <a href="#" class="ml-3 grey--text text--darken-4">Understanding Dark Chocolate</a> -->
     		       		<!-- <p class="grey--text text--darken-1">Ranking and comparing dark chocolate (cacoa > 50%)</p> -->
             </v-flex>
           </v-layout>
@@ -23,7 +25,8 @@
           <router-view></router-view>
 
           <v-layout row>
-            <v-flex xs10 offset-xs1 class="brown lighten-4 body caption text-xs-center grey--text">
+          <!-- brown lighten-4  -->
+            <v-flex xs8 offset-xs2 class="body caption text-xs-center grey--text">
                 <v-spacer></v-spacer>
                 <div>&copy; Jordan Marshall {{ new Date().getFullYear() }}</div>
             </v-flex>
@@ -34,19 +37,20 @@
  </div>
 
 <template id="barcard">
- <v-layout row>
+ <v-layout row class="barcard-row">
       <v-flex xs12>
         <v-layout row class="barcard ">
           <v-flex xs12 class="text-xs-left">
             <img v-bind:src="bar.image" class="mr-3"> 
-            <div class="headline subheading">
-              <span class="brown--text text--darken-4">{{bar.brand}}</span> - 
-              <span class="brown--text text--darken-4">{{bar.name}} ({{bar.chocolatePercentage}}%)</span>
+            <div class="title mb-2">
+            <!-- brown--text text--darken-4 -->
+              <span class="">{{bar.brand}}</span> - 
+              <span class="">{{bar.name}} ({{bar.chocolatePercentage}}%)</span>
             </div>
            
             <!-- <p>{{bar.notes}}</p> -->
 
-             <div class="tag-row body-1">
+             <div class="tag-row subheading">
               <span class="deep-orange--text">{{bar.rating * 10 }} points</span>
               <span v-if="bar.organic" class="ml-2 grey--text">Organic</span>
               <span v-if="bar.fairTrade" class="ml-2 grey--text">Fair Trade</span>
@@ -62,7 +66,7 @@
 <template id="mainList">
   <div>
     <v-layout row>
-      <v-flex xs10 offset-xs1 class="brown lighten-4 pt-2 pl-3">
+      <v-flex xs8 offset-xs2 class="body">
         <v-layout row>
           <v-flex xs2 class="pr-4">
               <v-select v-bind:items="orderOptions" label="Order By" v-model="orderBy" class="pb-0"></v-select>
@@ -83,7 +87,7 @@
       </v-flex>
     </v-layout>
     <v-layout row>
-      <v-flex xs10 offset-xs1 class="brown lighten-4 body">
+      <v-flex xs8 offset-xs2 class="body">
           <template v-for="bar in barsSorted">
             <bar-card v-bind:bar="bar" v-show="showBar(bar)"></bar-card>
           </template>
@@ -95,7 +99,29 @@
 <template id="about">
   <v-layout row>
     <v-flex xs10 offset-xs1 class="brown lighten-4 body">
-        <h1>About</h1>
+        <h1 class="title">About {{app_name}}</h1>
+        <p>I rate dark chocolate (cacao > 50%) and tell you which is the best.</p>
+        <p>I try to only rate "pure" bars, or those without extra ingredients (such as nuts, mint, caramel, etc), although sometimes one sneaks in.</p>
+        <h3 class="title">Ratings</h3>
+        <p>Each bar is rated on a scale of 0 - 100.  I use "points" instead of percent to avoid confusion with the cacao percentage.</p>
+        <p>The ratings are entirely subjective and based on my palette alone, which is the best.</p>
+        <h3 class="title">Recommend a Bar</h3>
+        <p>Is there a bar you want me to try? Let me know the name and where to get it.</p>
+    </v-flex>
+  </v-layout>
+</template>
+
+<template id="about-dc">
+  <v-layout row>
+    <v-flex xs10 offset-xs1 class="brown lighten-4 body">
+        <h1 class="title">About {{app_name}}</h1>
+        <p>I rate dark chocolate (cacao > 50%) and tell you which is the best.</p>
+        <p>I try to only rate "pure" bars, or those without extra ingredients (such as nuts, mint, caramel, etc), although sometimes one sneaks in.</p>
+        <h3 class="title">Ratings</h3>
+        <p>Each bar is rated on a scale of 0 - 100.  I use "points" instead of percent to avoid confusion with the cacao percentage.</p>
+        <p>The ratings are entirely subjective and based on my palette alone, which is the best.</p>
+        <h3 class="title">Recommend a Bar</h3>
+        <p>Is there a bar you want me to try? Let me know the name and where to get it.</p>
     </v-flex>
   </v-layout>
 </template>

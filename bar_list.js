@@ -6,6 +6,7 @@ var CHOCOLATE_BRANDS = {
    SB : "Scharffen Berger",
    ASEDA : "Aseda",
    LINDT : "Lindt",
+   GAB : "Green & Black's",
 }
 
 var ORDER_OPTIONS = {
@@ -20,6 +21,8 @@ var ETHICAL_OPTIONS = {
    FAIR_TRADE : "Fair Trade",
    RAINFOREST : "Rainforest Alliance",
 }
+
+var APP_NAME = "Jordans List";
 
 var BARS = [
 			{
@@ -95,10 +98,22 @@ var BARS = [
             notes : "The honey gives it a cloying sweetness that wont go away. Hard to imagine how this got to the shelves.",
             rating : 1
          },
+         {
+            name : "Dark Chocolate",
+            brand : CHOCOLATE_BRANDS.LINDT,
+            officialLink : "https://explore.lindtusa.com/excellence/",
+            image : "./img/78_lindt.jpg",
+            organic : false,
+            fairTrade : false,
+            chocolatePercentage : 78,
+            stores : ["Lindt Store"],
+            notes : "Smooth, not very bitter at all, a little too sweet, but not as many flavors either.",
+            rating : 7
+         },
          // {
          //    name : "Extra Dark",
          //    company : CHOCOLATE_BRANDS.LINDT,
-         //    officialLink : "https://asedarawhoney.com/product/aseda-fine-chocolate/",
+         //    officialLink : "https://explore.lindtusa.com/excellence/",
          //    image : "./img/fc_aseda.jpg",
          //    organic : false,
          //    fairTrade : false,
@@ -106,5 +121,16 @@ var BARS = [
          //    stores : ["Lindt Store"],
          //    notes : "Not many fruity notes, but very rich and even creamy.  Good level of bitterness",
          //    rating : 9
+         // },
+         // {
+         //    name : "Dark Chocolate",
+         //    company : CHOCOLATE_BRANDS.GAB,
+         //    officialLink : "https://asedarawhoney.com/product/aseda-fine-chocolate/",
+         //    image : "./img/fc_aseda.jpg",
+         //    organic : true,
+         //    fairTrade : true,
+         //    chocolatePercentage : 70,
+         //    notes : "A slight cloying sweetness at first, but finishes with a balanced and robust cacao taste.  Wanted to like it more, but the first bite is annoying.",
+         //    rating : 7
          // }
 		]
