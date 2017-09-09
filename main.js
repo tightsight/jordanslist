@@ -4,7 +4,18 @@
 
 Vue.component('bar-card', {
  	template : "#barcard",
- 	props : ['bar'],
+ 	props : ['bar', 'index'],
+   data : function(){
+      return {
+         showDetails : false,
+      }
+   },
+   methods : {
+      showDetailsModal : function(e){
+         this.showDetails = true;
+         e.stopPropagation();
+      }
+   }
  });
 
 var mainList = {
@@ -35,15 +46,19 @@ var mainList = {
          if(this.orderBy == ORDER_OPTIONS.DATE) {
             return BARS;
          }
-         else if (this.orderBy == ORDER_OPTIONS.HIGH_SCORE || this.orderBy == ORDER_OPTIONS.LOW_SCORE){
+         else if (this.orderBy == ORDER_OPTIONS.HIGH_SCORE){
             return BARS.slice().sort(function(bar1, bar2){
-               if(this.orderBy == ORDER_OPTIONS.HIGH_SCORE) return bar1.rating > bar2.rating;
-               return bar1.rating < bar2.rating;
+               return bar2.rating - bar1.rating;
+            });
+         } 
+         else if (this.orderBy == ORDER_OPTIONS.LOW_SCORE){
+            return BARS.slice().sort(function(bar1, bar2){
+               return bar1.rating - bar2.rating;
             });
          }
          else if (this.orderBy == ORDER_OPTIONS.CACAO){
             return BARS.slice().sort(function(bar1, bar2){
-               return bar1.chocolatePercentage < bar2.chocolatePercentage;
+               return bar2.chocolatePercentage - bar1.chocolatePercentage;
             });
          }
       }

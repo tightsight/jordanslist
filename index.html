@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Jordans List - Ranking Dark Chocolate</title>
+  <title>Jordan's List - Ranking Dark Chocolate</title>
  <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
+ <!-- <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville" rel="stylesheet"> -->
  <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
  <link href="./css/main.css" rel="stylesheet">
  <!-- <link rel="stylesheet" href="./css/font-awesome.min.css"> -->
@@ -11,14 +12,12 @@
  <div id="app">
    <v-app>
      <main>
-       <v-container class="">
+       <v-container class="pt-0 pb-0">
        		<v-layout row>
     				<v-flex xs8 offset-xs2 class="heading">
-    		       		<router-link to="/" class="page-title grey--text text--darken-4"><span class="display-1">Jordans List</span></router-link>
-                  <router-link to="/about" href="#" class="ml-4 grey--text text--darken-4 subheading">About</router-link>
-                  <router-link to="/dark-chocolate" class="ml-4 grey--text text--darken-4 subheading">Understanding Dark Chocolate</router-link>
-                  <!-- <a href="#" class="ml-3 grey--text text--darken-4">Understanding Dark Chocolate</a> -->
-    		       		<!-- <p class="grey--text text--darken-1">Ranking and comparing dark chocolate (cacoa > 50%)</p> -->
+    		       		<router-link to="/" class="page-title"><span class="headline"><strong>Jordan's List</strong></span></router-link>
+                  <router-link to="/about" href="#" class="ml-4 subheading">About</router-link>
+                  <!-- <router-link to="/dark-chocolate" class="ml-4 grey--text text--darken-4 subheading">Understanding Dark Chocolate</router-link> -->
             </v-flex>
           </v-layout>
 
@@ -41,8 +40,9 @@
       <v-flex xs12>
         <v-layout row class="barcard ">
           <v-flex xs12 class="text-xs-left">
-            <img v-bind:src="bar.image" class="mr-3"> 
-            <div class="title mb-2">
+            <div class="bar-number body-2 mr-3">{{index + 1}}.</div>
+            <img v-on:click="showDetailsModal" v-bind:src="bar.image" class="mr-3"> 
+            <div class="title mb-2" v-on:click="showDetailsModal">
             <!-- brown--text text--darken-4 -->
               <span class="">{{bar.brand}}</span> - 
               <span class="">{{bar.name}} ({{bar.chocolatePercentage}}%)</span>
@@ -51,13 +51,42 @@
             <!-- <p>{{bar.notes}}</p> -->
 
              <div class="tag-row subheading">
-              <span class="deep-orange--text">{{bar.rating * 10 }} points</span>
+              <span class="redish">{{bar.rating }} points</span>
               <span v-if="bar.organic" class="ml-2 grey--text">Organic</span>
               <span v-if="bar.fairTrade" class="ml-2 grey--text">Fair Trade</span>
-
             </div>
 
           </v-flex>
+        </v-layout>
+        <v-layout row>
+          <v-dialog v-model="showDetails" width="500">
+            <v-card>
+              <v-layout row>
+                <v-flex xs12>
+                  <img v-bind:src="bar.image" style="float: left;" class="mr-3"></img>
+
+                  <h2 class="title mt-3">{{bar.brand}} - {{bar.name}} ({{bar.chocolatePercentage}}%)</h2>
+                  <p><strong>Tasting Notes:</strong> {{bar.notes}}</p>
+                  <p class="tag-row subheading">
+                    <span class="deep-orange--text">{{bar.rating }} points</span>
+                    <span v-if="bar.organic" class="ml-2 grey--text">Organic</span>
+                    <span v-if="bar.fairTrade" class="ml-2 grey--text">Fair Trade</span>
+                  </p>
+                  <p>
+                    <a v-bind:href="bar.officialLink" target="_blank">Official Site</a>
+                  </p>
+
+                </v-flex>
+
+              </v-layout>
+
+             <!--  <v-card-title class="headline">{{bar.brand}} - {{bar.name}}</v-card-title>
+              <v-card-text>{{bar.notes}}</v-card-text>
+              <v-card-actions>
+                <v-btn class="green--text darken-1" flat="flat" v-on:click.native="showDetails = false">Close</v-btn>
+              </v-card-actions> -->
+            </v-card>
+          </v-dialog>
         </v-layout>
       </v-flex>
    </v-layout>
@@ -68,7 +97,7 @@
     <v-layout row>
       <v-flex xs8 offset-xs2 class="body">
         <v-layout row>
-          <v-flex xs2 class="pr-4">
+          <v-flex xs3 class="pr-4">
               <v-select v-bind:items="orderOptions" label="Order By" v-model="orderBy" class="pb-0"></v-select>
           </v-flex>
           <v-flex xs3 class="pr-4">
@@ -88,8 +117,8 @@
     </v-layout>
     <v-layout row>
       <v-flex xs8 offset-xs2 class="body">
-          <template v-for="bar in barsSorted">
-            <bar-card v-bind:bar="bar" v-show="showBar(bar)"></bar-card>
+          <template v-for="(bar, index) in barsSorted">
+            <bar-card v-bind:bar="bar" v-bind:index="index" v-show="showBar(bar)"></bar-card>
           </template>
       </v-flex>
     </v-layout>
@@ -98,7 +127,7 @@
 
 <template id="about">
   <v-layout row>
-    <v-flex xs10 offset-xs1 class="brown lighten-4 body">
+    <v-flex xs8 offset-xs2 class="body">
         <h1 class="title">About {{app_name}}</h1>
         <p>I rate dark chocolate (cacao > 50%) and tell you which is the best.</p>
         <p>I try to only rate "pure" bars, or those without extra ingredients (such as nuts, mint, caramel, etc), although sometimes one sneaks in.</p>
@@ -113,9 +142,9 @@
 
 <template id="about-dc">
   <v-layout row>
-    <v-flex xs10 offset-xs1 class="brown lighten-4 body">
-        <h1 class="title">About {{app_name}}</h1>
-        <p>I rate dark chocolate (cacao > 50%) and tell you which is the best.</p>
+    <v-flex xs8 offset-xs2 class="body">
+        <h1 class="title">Understanding Dark Chocolate</h1>
+        <p>I rate dark chocolate (cacao > 50%) and tell you which is tastes the best.</p>
         <p>I try to only rate "pure" bars, or those without extra ingredients (such as nuts, mint, caramel, etc), although sometimes one sneaks in.</p>
         <h3 class="title">Ratings</h3>
         <p>Each bar is rated on a scale of 0 - 100.  I use "points" instead of percent to avoid confusion with the cacao percentage.</p>

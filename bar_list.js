@@ -22,9 +22,21 @@ var ETHICAL_OPTIONS = {
    RAINFOREST : "Rainforest Alliance",
 }
 
-var APP_NAME = "Jordans List";
+var APP_NAME = "Jordan's List";
 
 var BARS = [
+         {
+            name : "Extra Dark",
+            brand : CHOCOLATE_BRANDS.LINDT,
+            officialLink : "https://explore.lindtusa.com/excellence/",
+            image : "./img/85_lindt.jpg",
+            organic : false,
+            fairTrade : false,
+            chocolatePercentage : 85,
+            stores : ["Lindt Store"],
+            notes : "Not many fruity notes, but very rich and even creamy.  Good level of bitterness.",
+            rating : 83
+         },
 			{
 				name : "Dark Blackout",
 				brand : "Alter Eco",
@@ -35,7 +47,7 @@ var BARS = [
 				chocolatePercentage : 85,
 				stores : ["whole foods"],
             notes : "Bittersweet with fruity notes.  Rich texture.",
-				rating : 9
+				rating : 88
 			},
 			{
 				name : "The Dark Chocolate Lovers Chocolate Bar",
@@ -46,8 +58,8 @@ var BARS = [
 				fairTrade : false,
 				chocolatePercentage : 85,
 				stores : ["trader joes"],
-            notes : "Bittersweet with a very fruity taste.  Packaging nice as well.",
-				rating : 9
+            notes : "Bittersweet with a strong fruity taste.  Packaging nice as well.",
+				rating : 90
 			},
 			{
 				name : "Panama Extra Dark",
@@ -59,7 +71,7 @@ var BARS = [
 				chocolatePercentage : 80,
 				stores : ["whole foods"],
             notes : "Very dry, tasted a lot like baking chocolate.",
-				rating : 3
+				rating : 35
 			},
          {
             name : "Extra Strong",
@@ -71,7 +83,7 @@ var BARS = [
             chocolatePercentage : 77,
             stores : ["whole foods"],
             notes : "Smooth, and not at all bitter.  Slight burnt aftertaste, but overall very nice.",
-            rating : 8
+            rating : 76
          },
          {
             name : "Extra Dark",
@@ -84,7 +96,7 @@ var BARS = [
             stores : ["whole foods"],
             notes : "Some richness, but not many strong flavors, and a little too sweet.",
             // A little too sweet for my taste.
-            rating : 5
+            rating : 55
          },
          {
             name : "Fine Chocolate",
@@ -96,7 +108,7 @@ var BARS = [
             chocolatePercentage : 80,
             stores : ["Food of All Nations"],
             notes : "The honey gives it a cloying sweetness that wont go away. Hard to imagine how this got to the shelves.",
-            rating : 1
+            rating : 10
          },
          {
             name : "Dark Chocolate",
@@ -107,21 +119,9 @@ var BARS = [
             fairTrade : false,
             chocolatePercentage : 78,
             stores : ["Lindt Store"],
-            notes : "Smooth, not very bitter at all, a little too sweet, but not as many flavors either.",
-            rating : 7
+            notes : "Smooth, although a little too sweet for 78%.  Lacking more robust flavors.",
+            rating : 74
          },
-         // {
-         //    name : "Extra Dark",
-         //    company : CHOCOLATE_BRANDS.LINDT,
-         //    officialLink : "https://explore.lindtusa.com/excellence/",
-         //    image : "./img/fc_aseda.jpg",
-         //    organic : false,
-         //    fairTrade : false,
-         //    chocolatePercentage : 85,
-         //    stores : ["Lindt Store"],
-         //    notes : "Not many fruity notes, but very rich and even creamy.  Good level of bitterness",
-         //    rating : 9
-         // },
          // {
          //    name : "Dark Chocolate",
          //    company : CHOCOLATE_BRANDS.GAB,
