@@ -14,7 +14,7 @@
      <main>
        <v-container class="pt-0 pb-0">
        		<v-layout row>
-    				<v-flex xs8 offset-xs2 class="heading">
+    				<v-flex xs12 sm10 offset-sm1 md8 offset-md2  class="heading">
     		       		<router-link to="/" class="page-title"><span class="headline"><strong>Jordan's List</strong></span></router-link>
                   <router-link to="/about" href="#" class="ml-4 subheading">About</router-link>
                   <!-- <router-link to="/dark-chocolate" class="ml-4 grey--text text--darken-4 subheading">Understanding Dark Chocolate</router-link> -->
@@ -25,7 +25,7 @@
 
           <v-layout row>
           <!-- brown lighten-4  -->
-            <v-flex xs8 offset-xs2 class="body caption text-xs-center grey--text">
+            <v-flex xs12 sm10 offset-sm1 md8 offset-md2  class="body caption text-xs-center grey--text">
                 <v-spacer></v-spacer>
                 <div>&copy; Jordan Marshall {{ new Date().getFullYear() }}</div>
             </v-flex>
@@ -95,7 +95,7 @@
 <template id="mainList">
   <div>
     <v-layout row>
-      <v-flex xs8 offset-xs2 class="body">
+      <v-flex xs12 sm10 offset-sm1 md8 offset-md2 class="body">
         <v-layout row>
           <v-flex xs3 class="pr-4">
               <v-select v-bind:items="orderOptions" label="Order By" v-model="orderBy" class="pb-0"></v-select>
@@ -116,7 +116,7 @@
       </v-flex>
     </v-layout>
     <v-layout row>
-      <v-flex xs8 offset-xs2 class="body">
+      <v-flex xs12 sm10 offset-sm1 md8 offset-md2 class="body">
           <template v-for="(bar, index) in barsSorted">
             <bar-card v-bind:bar="bar" v-bind:index="index" v-show="showBar(bar)"></bar-card>
           </template>
@@ -127,7 +127,7 @@
 
 <template id="about">
   <v-layout row>
-    <v-flex xs8 offset-xs2 class="body">
+    <v-flex xs12 sm10 offset-sm1 md8 offset-md2 class="body">
         <h1 class="title">About {{app_name}}</h1>
         <p>I rate dark chocolate (cacao > 50%) and tell you which is the best.</p>
         <p>I try to only rate "pure" bars, or those without extra ingredients (such as nuts, mint, caramel, etc), although sometimes one sneaks in.</p>
@@ -142,7 +142,7 @@
 
 <template id="about-dc">
   <v-layout row>
-    <v-flex xs8 offset-xs2 class="body">
+    <v-flex xs12 sm10 offset-sm1 md8 offset-md2 class="body">
         <h1 class="title">Understanding Dark Chocolate</h1>
         <p>I rate dark chocolate (cacao > 50%) and tell you which is tastes the best.</p>
         <p>I try to only rate "pure" bars, or those without extra ingredients (such as nuts, mint, caramel, etc), although sometimes one sneaks in.</p>
