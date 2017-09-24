@@ -22,7 +22,7 @@ var ETHICAL_OPTIONS = {
    RAINFOREST : "Rainforest Alliance",
 }
 
-var APP_NAME = "Jordan's List";
+var APP_NAME = "Dark Chocolate List";
 
 var BARS = [
          {
@@ -121,6 +121,18 @@ var BARS = [
             stores : ["Lindt Store"],
             notes : "Smooth, although a little too sweet for 78%.  Lacking more robust flavors.",
             rating : 74
+         },
+         {
+            name : "Smooth Dark",
+            brand : CHOCOLATE_BRANDS.LINDT,
+            officialLink : "https://explore.lindtusa.com/excellence/",
+            image : "./img/70_lindt.jpg",
+            organic : false,
+            fairTrade : false,
+            chocolatePercentage : 70,
+            stores : ["Lindt Store"],
+            notes : "Very smooth, and not too sweet for 70%.",
+            rating : 80
          },
          // {
          //    name : "Dark Chocolate",

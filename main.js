@@ -110,4 +110,7 @@ var router = new VueRouter({
 new Vue({ 
 	el: '#app',
   router : router,
+  data : {
+   app_name : APP_NAME,
+  }
 })
